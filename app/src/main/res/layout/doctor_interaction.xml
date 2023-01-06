@@ -201,7 +201,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.82"
-                app:layout_constraintStart_toEndOf="@id/layoutAppointment">
+                app:layout_constraintStart_toEndOf="@id/layoutAppointment"
+                tools:ignore="TouchTargetSizeCheck">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/editMedication"

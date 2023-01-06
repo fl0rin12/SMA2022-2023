@@ -27,6 +27,7 @@
         <activity android:name=".Login"></activity>
         <activity android:name=".Register"></activity>
         <activity android:name=".PacientDashboard"></activity>
+        <activity android:name=".DoctorDashboard"></activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

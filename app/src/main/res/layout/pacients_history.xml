@@ -5,23 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    tools:context=".TreatmentHistory">
+    tools:context=".PacientsHistory">
 
     <View
-        android:id="@+id/viewHeaderBackground"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
         android:background="#993333"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/treatmentHistoryTitle"
+        android:id="@+id/pacientDashboardTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_44sdp"
         android:textAlignment="center"
-        android:text="Pacient's treatment history"
+        android:text="Doctor's pacients history"
         android:textColor="@color/white"
         android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
@@ -41,7 +40,7 @@
         android:tint="@color/white" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/pacientTreatmentsHistory"
+        android:id="@+id/doctorPacientsHistory"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_marginRight="@dimen/_16sdp"
@@ -53,7 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
-            android:id="@+id/treatmentHistoryList"
+            android:id="@+id/PacientsHistory"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="575dp"

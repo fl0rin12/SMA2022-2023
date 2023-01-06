@@ -11,13 +11,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import org.json.JSONArray
 
 class Login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -34,6 +33,7 @@ class Login : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         setContentView(R.layout.login_screen)
+
         auth = FirebaseAuth.getInstance()
         val newUser = findViewById<Button>(R.id.newUser)
         val LogInEmail = findViewById<TextInputLayout>(R.id.emailLogIn)
@@ -67,10 +67,27 @@ class Login : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { it ->
                     if (it.isSuccessful) {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
+                        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+                        val databaseRef = FirebaseDatabase.getInstance().getReference("Users/")
+                        val userRef = databaseRef.child(uid)
+                        userRef.get().addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val snapshot = task.result
+                                val role = snapshot.child("role").getValue(String::class.java)
+                                Log.d("TAG", "role: $role\n")
+                                if(role.equals("Medic")){
+                                    val intent= Intent(this, DoctorDashboard::class.java)
+                                    startActivity(intent)}
+                                else{
+                                    val intent= Intent(this, PacientDashboard::class.java)
+                                    startActivity(intent)
+                                }
+                            } else {
+                                Log.d("TAG", task.exception!!.message!!) //Don't ignore potential errors!
+                            }
+                        }
                     } else {
                         Toast.makeText(this, "Somewthing wrong", Toast.LENGTH_SHORT).show()
                     }

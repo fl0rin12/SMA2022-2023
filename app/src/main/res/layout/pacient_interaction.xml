@@ -28,7 +28,7 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/pacientHistoryTitle"
+        android:id="@+id/pacientTreatmentTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -67,6 +67,18 @@
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/symptom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Symptom"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/diagnostic"/>
+
             <TextView
                 android:id="@+id/medication"
                 android:layout_width="match_parent"
@@ -76,7 +88,7 @@
                 android:textSize="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintTop_toBottomOf="@id/diagnostic"/>
+                app:layout_constraintTop_toBottomOf="@id/symptom"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -128,23 +140,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:layout_marginBottom="5dp"
                 android:weightSum="100">
 
                 <EditText
                     android:id="@+id/messageBox"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="88"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="90"
                     android:paddingLeft="10dp"
                     android:hint="Type a message"
                     android:background="@drawable/message_box_background"/>
                 <ImageView
                     android:id="@+id/sentButton"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_send"
                     android:layout_weight="20"/>
             </LinearLayout>

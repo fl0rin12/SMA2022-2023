@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,9 @@ class PacientInteraction : AppCompatActivity() {
     var receiverRoom: String? = null
     var senderRoom: String? = null
 
+    private lateinit var pacientFullname: TextView
+    private lateinit var symptom: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setFlags(
@@ -30,8 +34,13 @@ class PacientInteraction : AppCompatActivity() {
         )
         setContentView(R.layout.pacient_interaction)
 
-        mDbRef = FirebaseDatabase.getInstance().reference
+        pacientFullname = findViewById(R.id.pacientTreatmentTitle)
+        pacientFullname.text = intent.getStringExtra("pacientFullname")
 
+        symptom = findViewById(R.id.symptom)
+        symptom.text = intent.getStringExtra("symptom")
+
+        mDbRef = FirebaseDatabase.getInstance().reference
         val receiverUid = intent.getStringExtra("pacientUID")
         val senderUid = FirebaseAuth.getInstance().currentUser?.uid
         mDbRef = FirebaseDatabase.getInstance().reference
@@ -42,23 +51,23 @@ class PacientInteraction : AppCompatActivity() {
         sendButton = findViewById(R.id.sentButton)
         messageList = ArrayList()
         messageAdapter = MessageAdapter(this, messageList)
-        chatRecyclerView.layoutManager=LinearLayoutManager(this)
-        chatRecyclerView.adapter=messageAdapter
-        mDbRef.child("chats").child(senderRoom!!).child("messages").addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                messageList.clear()
-                for (postSnapshot in snapshot.children){
-                    val message=postSnapshot.getValue(Message::class.java)
-                    messageList.add(message!!)
+        chatRecyclerView.layoutManager = LinearLayoutManager(this)
+        chatRecyclerView.adapter = messageAdapter
+        mDbRef.child("chats").child(senderRoom!!).child("messages")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    messageList.clear()
+                    for (postSnapshot in snapshot.children) {
+                        val message = postSnapshot.getValue(Message::class.java)
+                        messageList.add(message!!)
+                    }
+                    messageAdapter.notifyDataSetChanged()
                 }
-                messageAdapter.notifyDataSetChanged()
-            }
 
-            override fun onCancelled(error: DatabaseError) {
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
 
-            }
-
-        })
         sendButton.setOnClickListener {
             val message = messageBox.text.toString()
             val messageObject = Message(message, senderUid)

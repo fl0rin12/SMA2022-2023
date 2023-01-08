@@ -28,7 +28,7 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/doctorPacientTitle"
+        android:id="@+id/requestPacientName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -55,7 +55,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_8sdp">
+            android:padding="12dp">
 
             <TextView
                 android:id="@+id/pacientDescriptionTitle"
@@ -64,13 +64,14 @@
                 android:text="Pacient's description"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="16dp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <LinearLayout
+                android:gravity="center"
                 android:id="@+id/pacientDescription"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/pacientDescriptionTitle"
@@ -79,37 +80,90 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
+                    android:id="@+id/pacientGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="parent"
-                    android:text="Gender"
+                    android:text="Gender:"
                     android:textSize="12dp"
+                    android:layout_marginStart="5dp"
                     android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
-                    android:id="@+id/pacientGender"
+                    android:id="@+id/pacientGenderData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="parent"
-                    android:text="Gender"
+                    android:text="GenderData"
                     android:textSize="12dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/pacientAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    android:text="Age:"
+                    android:textSize="12dp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/pacientAgeData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    android:text="AgeData"
+                    android:textSize="12dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/pacientWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    android:text="Weight:"
+                    android:textSize="12dp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/pacientWeightData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    android:text="WeightData"
+                    android:textSize="12dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
                     android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"/>
 
             </LinearLayout>
 
-
-
             <TextView
                 android:id="@+id/pacientWords"
                 android:layout_width="match_parent"
                 android:layout_height="125dp"
-                android:text="Medication"
+                android:text="Symptom"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="12dp"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:layout_constraintTop_toBottomOf="@id/pacientDescription"/>
 
@@ -118,9 +172,9 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/doctorPacientChat"
+        android:id="@+id/doctorFeedback"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_marginRight="@dimen/_16sdp"
         android:layout_marginLeft="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_32sdp"
@@ -134,21 +188,72 @@
             android:id="@+id/doctorChatTitle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
-            android:text="Chat"
+            android:text="Your expertise"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="16dp"
             android:layout_marginTop="@dimen/_5sdp" />
 
         <LinearLayout
             android:id="@+id/doctorChat"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_25sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"/>
+            android:layout_marginRight="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diagnostic:"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:layout_marginEnd="10dp"/>
+
+                <EditText
+                    android:id="@+id/givenDiagnostic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:hint="Diagnostic"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:layout_marginEnd="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medication:"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:layout_marginEnd="10dp"/>
+
+                <EditText
+                    android:id="@+id/givenMedication"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter medication here"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:layout_marginEnd="10dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

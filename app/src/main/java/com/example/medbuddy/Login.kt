@@ -78,10 +78,10 @@ class Login : AppCompatActivity() {
                                 val role = snapshot.child("role").getValue(String::class.java)
                                 Log.d("TAG", "role: $role\n")
                                 if(role.equals("Medic")){
-                                    val intent= Intent(this, PacientInteraction::class.java)
+                                    val intent= Intent(this, DoctorDashboard::class.java)
                                     startActivity(intent)}
                                 else{
-                                    val intent= Intent(this, PacientInteraction::class.java)
+                                    val intent= Intent(this, PacientDashboard::class.java)
                                     startActivity(intent)
                                 }
                             } else {

@@ -7,8 +7,6 @@ data class Users(
     var phoneNumber: String? = null,
     var role: String? = null,
     var uid: String?= null
-
-
 )
 
 

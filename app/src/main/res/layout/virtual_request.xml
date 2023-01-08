@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    tools:context=".PacientInteraction">
+    tools:context=".DoctorInteraction">
 
     <View
         android:id="@+id/viewHeaderBackground"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/treatmentHistoryBackButton"
+        android:id="@+id/BackButton"
         android:layout_width="@dimen/_26sdp"
         android:layout_height="@dimen/_26sdp"
         android:layout_marginStart="@dimen/_16sdp"
@@ -28,29 +28,29 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/pacientHistoryTitle"
+        android:id="@+id/doctorPacientTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="24dp"
-        android:text="Pacient"
+        android:text="Pacient's name"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/treatmentHistoryBackButton"
+        app:layout_constraintStart_toEndOf="@id/BackButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/pacientCardHeader"
+        android:id="@+id/pacientDataAndInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="@dimen/_16sdp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_16sdp"
-        app:layout_constraintBottom_toBottomOf="@id/viewHeaderBackground"
-        app:layout_constraintTop_toBottomOf="@id/viewHeaderBackground">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -58,25 +58,60 @@
             android:padding="@dimen/_8sdp">
 
             <TextView
-                android:id="@+id/diagnostic"
+                android:id="@+id/pacientDescriptionTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Diagnostic"
+                android:text="Pacient's description"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"/>
-            <TextView
-                android:id="@+id/medication"
-                android:layout_width="match_parent"
+
+            <LinearLayout
+                android:id="@+id/pacientDescription"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/pacientDescriptionTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    android:text="Gender"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/pacientGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    android:text="Gender"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/pacientWords"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
                 android:text="Medication"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintTop_toBottomOf="@id/diagnostic"/>
+                app:layout_constraintTop_toBottomOf="@id/pacientDescription"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -85,15 +120,15 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/doctorPacientChat"
         android:layout_width="match_parent"
-        android:layout_height="375dp"
+        android:layout_height="200dp"
         android:layout_marginRight="@dimen/_16sdp"
         android:layout_marginLeft="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_32sdp"
         android:layout_marginBottom="@dimen/_32sdp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_16sdp"
-        app:layout_constraintBottom_toTopOf="@id/pacientInteractionHeader"
-        app:layout_constraintTop_toBottomOf="@id/pacientCardHeader">
+        app:layout_constraintBottom_toTopOf="@id/acceptOrDecline"
+        app:layout_constraintTop_toBottomOf="@id/pacientDataAndInput">
 
         <TextView
             android:id="@+id/doctorChatTitle"
@@ -106,58 +141,22 @@
             android:textSize="@dimen/_12ssp"
             android:layout_marginTop="@dimen/_5sdp" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/doctorChat"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="330dp"
+            android:layout_height="150dp"
             android:layout_marginTop="@dimen/_25sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/chatReciclerView"
-                android:layout_above="@+id/linearLayout"
-                android:layout_alignParentTop="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:orientation="horizontal"
-                android:layout_marginBottom="5dp"
-                android:weightSum="100">
-
-                <EditText
-                    android:id="@+id/messageBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="88"
-                    android:layout_marginLeft="10dp"
-                    android:paddingLeft="10dp"
-                    android:hint="Type a message"
-                    android:background="@drawable/message_box_background"/>
-                <ImageView
-                    android:id="@+id/sentButton"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_send"
-                    android:layout_weight="20"/>
-            </LinearLayout>
-        </RelativeLayout>
+            android:layout_marginRight="@dimen/_10sdp"/>
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/pacientInteractionHeader"
+        android:id="@+id/acceptOrDecline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16sdp"
-
         android:layout_marginEnd="@dimen/_16sdp"
         android:layout_marginBottom="@dimen/_20sdp"
         app:cardBackgroundColor="@color/white"
@@ -167,59 +166,59 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_14sdp">
+            android:padding="10dp">
 
             <LinearLayout
-                android:id="@+id/layoutReminder"
-                android:clickable="true"
+                android:id="@+id/layoutAcceptRequest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_32sdp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/layoutEditMedication">
+                app:layout_constraintEnd_toStartOf="@id/layoutDeclineRequest"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/reminder"
+                    android:id="@+id/acceptRequest"
                     android:layout_width="@dimen/_28sdp"
                     android:layout_height="@dimen/_28sdp"
-                    android:src="@drawable/ic_alarm" />
+                    android:src="@drawable/ic_accept" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reminder"
+                    android:text="Accept"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layoutEditMedication"
-                android:clickable="true"
+                android:id="@+id/layoutDeclineRequest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_32sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/layoutReminder"
+                app:layout_constraintStart_toEndOf="@id/layoutAcceptRequest"
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/editMedication"
+                    android:id="@+id/decline"
                     android:layout_width="@dimen/_28sdp"
                     android:layout_height="@dimen/_28sdp"
-                    android:src="@drawable/ic_medication" />
+                    android:src="@drawable/ic_decline" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit Medication"
+                    android:text="Decline"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp" />
 

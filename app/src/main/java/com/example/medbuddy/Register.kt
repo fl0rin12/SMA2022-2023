@@ -115,7 +115,7 @@ class Register : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(sdemail, sdpassword).addOnCompleteListener {
                     if (it.isSuccessful) {
                         val databaseRef =
-                            database.reference.child(sdrole).child(auth.currentUser!!.uid)
+                            database.reference.child("Users").child(auth.currentUser!!.uid)
                         val users: Users =
                             Users(
                                 sdusername,

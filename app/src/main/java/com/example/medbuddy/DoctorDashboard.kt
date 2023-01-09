@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import org.w3c.dom.Text
 
 class DoctorDashboard : AppCompatActivity() {
     private lateinit var treatmentRecyclerView: RecyclerView
@@ -45,10 +44,10 @@ class DoctorDashboard : AppCompatActivity() {
                 for (postSnapshot in snapshot.children) {
                     val treatment = postSnapshot.getValue(Treatment::class.java)
                     if (treatment != null) {
-                        if (mAuth.currentUser?.uid == treatment?.doctorUID &&
-                            treatment.accepted == true && treatment.active == true
+                        if ((mAuth.currentUser?.uid == treatment.doctorUID) &&
+                            (treatment.accepted == true) && (treatment.active == true)
                         ) {
-                            treatmentList.add(treatment!!)
+                            treatmentList.add(treatment)
                         }
                     }
                 }

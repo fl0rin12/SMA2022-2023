@@ -11,8 +11,8 @@ import com.google.firebase.ktx.Firebase
 
 class MessageAdapter(val context: Context, val messageList: ArrayList<Message>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    val ITEM_RECEIVE = 1
-    val ITEM_SENT = 2
+    private val ITEM_RECEIVE = 1
+    private val ITEM_SENT = 2
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if(viewType ==1){

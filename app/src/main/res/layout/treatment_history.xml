@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     tools:context=".TreatmentHistory">
 
@@ -12,54 +12,57 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
         android:background="#993333"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/treatmentHistoryTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_44sdp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="patientName's treatment history"
         android:textAlignment="center"
-        android:text="Pacient's treatment history"
         android:textColor="@color/white"
         android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:clickable="true"
         android:id="@+id/treatmentHistoryBackButton"
-        android:layout_width="@dimen/_26sdp"
-        android:layout_height="@dimen/_26sdp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_16sdp"
+        android:clickable="true"
         android:src="@drawable/ic_treatment_back"
+        android:tint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:tint="@color/white" />
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/pacientTreatmentsHistory"
+        android:id="@+id/patientTreatmentsHistory"
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:layout_marginRight="@dimen/_16sdp"
         android:layout_marginLeft="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
         android:layout_marginBottom="@dimen/_20sdp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_16sdp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/treatmentHistoryTitle">
 
         <LinearLayout
             android:id="@+id/treatmentHistoryList"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="575dp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"/>
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:orientation="vertical" />
 
     </com.google.android.material.card.MaterialCardView>
 

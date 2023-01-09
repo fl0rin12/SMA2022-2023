@@ -1,6 +1,5 @@
 package com.example.medbuddy
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.EditText
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class PacientInteraction : AppCompatActivity() {
+class PatientInteraction : AppCompatActivity() {
 
     private lateinit var mDbRef: DatabaseReference
     private lateinit var chatRecyclerView: RecyclerView
@@ -20,10 +19,10 @@ class PacientInteraction : AppCompatActivity() {
     private lateinit var sendButton: ImageView
     private lateinit var messageAdapter: MessageAdapter
     private lateinit var messageList: ArrayList<Message>
-    var receiverRoom: String? = null
-    var senderRoom: String? = null
+    private var receiverRoom: String? = null
+    private var senderRoom: String? = null
 
-    private lateinit var pacientFullname: TextView
+    private lateinit var patientFullName: TextView
     private lateinit var symptom: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,21 +31,21 @@ class PacientInteraction : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.pacient_interaction)
+        setContentView(R.layout.patient_interaction)
 
-        pacientFullname = findViewById(R.id.pacientTreatmentTitle)
-        pacientFullname.text = intent.getStringExtra("pacientFullname")
+        patientFullName = findViewById(R.id.patientTreatmentTitle)
+        patientFullName.text = intent.getStringExtra("patientFullName")
 
         symptom = findViewById(R.id.symptom)
         symptom.text = intent.getStringExtra("symptom")
 
         mDbRef = FirebaseDatabase.getInstance().reference
-        val receiverUid = intent.getStringExtra("pacientUID")
+        val receiverUid = intent.getStringExtra("patientUID")
         val senderUid = FirebaseAuth.getInstance().currentUser?.uid
         mDbRef = FirebaseDatabase.getInstance().reference
         senderRoom = receiverUid + senderUid
         receiverRoom = senderUid + receiverUid
-        chatRecyclerView = findViewById(R.id.chatReciclerView)
+        chatRecyclerView = findViewById(R.id.chatRecyclerView)
         messageBox = findViewById(R.id.messageBox)
         sendButton = findViewById(R.id.sentButton)
         messageList = ArrayList()

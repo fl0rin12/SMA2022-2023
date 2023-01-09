@@ -1,109 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Login"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#F1948A"
-    android:padding="20dp">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="basicReadWrite"
-        android:text="Test Firebase" />
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Login">
+
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:contentDescription="AppLogo"
         android:src="@drawable/medbuddylogo"
         android:transitionName="logo_image"
-        android:contentDescription="TODO" />
+        tools:ignore="HardcodedText,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/logoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello there, Welcome Back"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="Welcome back to MedBuddy!"
         android:textColor="@color/black"
+        android:textSize="25sp"
         android:transitionName="logo_text"
-        android:textSize="40sp"
-        android:fontFamily="@font/roboto_slab" />
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In to continue"
-        android:textSize="18sp"
-        android:fontFamily="@font/roboto_slab" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="Please Sign In To Continue"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLogIn"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/emailLogIn"
             android:hint="Email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:textColor="@color/black"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLogIn"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/passwordLogIn"
             android:hint="Password"
             app:passwordToggleEnabled="true"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:textColor="@color/black"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:text="Forget Password?"
-            android:id="@+id/forgetPassword"
-            android:textColor="@color/black"
-            android:layout_gravity="right"
-            android:elevation="0dp"
-            android:layout_margin="5dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:text="GO"
             android:id="@+id/loginButton"
-            android:textColor="@color/white"
-            android:layout_gravity="right"
-            android:elevation="0dp"
-            android:layout_margin="5dp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:text="NEW USER? SIGN UP"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/black"
+            android:fontFamily="@font/roboto_slab"
+            android:text="Login"
+            android:textColor="@color/white"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/newUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="#00000000"
+            android:fontFamily="@font/roboto_slab"
+            android:text="NEW USER? SIGN UP"
             android:textColor="@color/black"
-            android:layout_gravity="right"
-            android:elevation="0dp"
-            android:layout_margin="5dp"/>
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

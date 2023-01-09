@@ -165,6 +165,8 @@
                     android:inputType="text"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
                 <ImageView

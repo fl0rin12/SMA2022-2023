@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="medbuddy_logo_background">#F1948A</color>
-<string-array name="spinner_items">
-    <item>Patient</item>
-    <item>Medic</item>
-</string-array>
+    <string-array name="spinner_items">
+        <item>Patient</item>
+        <item>Medic</item>
+    </string-array>
+
+    <string-array name="medical_specialties">
+        <item>ORL</item>
+        <item>Cardiology</item>
+        <item>Ophthalmology</item>
+        <item>Orthopedic</item>
+    </string-array>
 </resources>

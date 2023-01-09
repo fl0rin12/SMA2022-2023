@@ -18,8 +18,7 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
+            WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         setContentView(R.layout.login_screen)
 
@@ -51,9 +50,7 @@ class Login : AppCompatActivity() {
             } else if (password.length < 7) {
                 logInPassword.error = "Please enter a password with more than 7 characters"
                 Toast.makeText(
-                    this,
-                    "Please enter a password with more than 7 characters",
-                    Toast.LENGTH_SHORT
+                    this, "Please enter a password with more than 7 characters", Toast.LENGTH_SHORT
                 ).show()
             } else {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { it1 ->
@@ -65,22 +62,26 @@ class Login : AppCompatActivity() {
                             if (task.isSuccessful) {
                                 val snapshot = task.result
                                 val role = snapshot.child("role").getValue(String::class.java)
-                                val fullName = snapshot.child("fullName").getValue(String::class.java)
-                                val phoneNumber = snapshot.child("phoneNumber").getValue(String::class.java)
+                                val fullName =
+                                    snapshot.child("fullName").getValue(String::class.java)
+                                val phoneNumber =
+                                    snapshot.child("phoneNumber").getValue(String::class.java)
                                 Log.d("TAG", "role: $role\n")
-                                if(role.equals("Medic")){
-                                    val intent= Intent(this, DoctorDashboard::class.java)
+                                if (role.equals("Medic")) {
+                                    val intent = Intent(this, DoctorDashboard::class.java)
                                     intent.putExtra("fullName", fullName)
                                     intent.putExtra("phoneNumber", phoneNumber)
-                                    startActivity(intent)}
-                                else{
-                                    val intent= Intent(this, PatientDashboard::class.java)
+                                    startActivity(intent)
+                                } else {
+                                    val intent = Intent(this, PatientDashboard::class.java)
                                     intent.putExtra("fullName", fullName)
                                     intent.putExtra("phoneNumber", phoneNumber)
                                     startActivity(intent)
                                 }
                             } else {
-                                Log.d("TAG", task.exception!!.message!!) //Don't ignore potential errors!
+                                Log.d(
+                                    "TAG", task.exception!!.message!!
+                                ) //Don't ignore potential errors!
                             }
                         }
                     } else {

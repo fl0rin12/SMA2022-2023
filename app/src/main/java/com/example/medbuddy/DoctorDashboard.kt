@@ -10,9 +10,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class DoctorDashboard : AppCompatActivity() {
+
     private lateinit var treatmentRecyclerView: RecyclerView
     private lateinit var treatmentList: ArrayList<Treatment>
-    private lateinit var adapter: TreatmentAdapter
+    private lateinit var adapter: DoctorTreatmentAdapter
     private lateinit var mDbRef: DatabaseReference
     private lateinit var mAuth: FirebaseAuth
 
@@ -34,7 +35,7 @@ class DoctorDashboard : AppCompatActivity() {
         mDbRef = FirebaseDatabase.getInstance().reference
         mAuth = FirebaseAuth.getInstance()
         treatmentList = ArrayList()
-        adapter = TreatmentAdapter(this, treatmentList)
+        adapter = DoctorTreatmentAdapter(this, treatmentList)
         treatmentRecyclerView = findViewById(R.id.treatmentRecyclerView)
         treatmentRecyclerView.layoutManager = LinearLayoutManager(this)
         treatmentRecyclerView.adapter = adapter

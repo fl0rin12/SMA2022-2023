@@ -129,14 +129,57 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-        <LinearLayout
-            android:id="@+id/doctorChat"
+        <RelativeLayout
+            android:id="@+id/patientChat"
             android:layout_width="match_parent"
             android:layout_height="330dp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_25sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chatRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/linearLayout"
+                android:layout_alignParentTop="true" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <EditText
+                    android:id="@+id/messageBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="90"
+                    android:autofillHints="Type the message you want to send."
+                    android:background="@drawable/message_box_background"
+                    android:fontFamily="@font/roboto_slab"
+                    android:hint="Type a message..."
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                <ImageView
+                    android:id="@+id/sentButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="20"
+                    android:contentDescription="Send button"
+                    android:src="@drawable/ic_send"
+                    tools:ignore="HardcodedText,RedundantDescriptionCheck" />
+            </LinearLayout>
+        </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

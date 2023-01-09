@@ -60,15 +60,17 @@
                 tools:ignore="HardcodedText" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spinner_medical"
+                android:background="#AE1717"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:autofillHints="Specialty"
                 android:entries="@array/medical_specialties"
                 android:fontFamily="@font/roboto_slab"
                 android:hint="Specialty"
-                android:autofillHints="Specialty"
                 android:minHeight="48dp"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/patientRequestTitle"
@@ -85,7 +87,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/spinner"
+                app:layout_constraintTop_toBottomOf="@id/spinner_medical"
                 tools:ignore="HardcodedText" />
 
 
@@ -93,13 +95,14 @@
                 android:id="@+id/patientWords"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:autofillHints="Write a detailed message about how you feel."
                 android:fontFamily="@font/roboto_slab"
                 android:hint="Write symptoms here.."
                 android:inputType="text"
                 android:textAlignment="center"
                 android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintTop_toBottomOf="@id/requestQuestion"
                 tools:ignore="HardcodedText,TouchTargetSizeCheck"

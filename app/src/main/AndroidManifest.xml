@@ -40,6 +40,12 @@
         <activity
             android:name=".PatientInteraction"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".DoctorInteraction"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".CreateVirtualRequest"
+            android:windowSoftInputMode="adjustPan" />
 
         <meta-data
             android:name="preloaded_fonts"

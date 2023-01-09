@@ -6,7 +6,7 @@ data class Treatment(
     var diagnostic: String? = null,
     var medication: String? = null,
     var symptom: String? = null,
+    var specialty:String? = null,
     var accepted:Boolean? = null,
-    var active:Boolean? = null,
-    var uid: String?= null
+    var active:Boolean? = null
 )

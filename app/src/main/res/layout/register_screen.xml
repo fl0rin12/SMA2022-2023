@@ -1,49 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Register"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#F1948A"
-    android:padding="20dp">
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Register">
 
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="150dp"
-        android:layout_height="26dp"
-        android:contentDescription="TODO"
+        android:layout_height="125dp"
+        android:layout_gravity="center"
+        android:contentDescription="MedBuddy Logo"
         android:src="@drawable/medbuddylogo"
-        android:transitionName="logo_image" />
+        android:transitionName="logo_image"
+        tools:ignore="HardcodedText,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/logoName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/roboto_slab"
-        android:text="Register to continue"
+        android:text="Register a new account"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="40sp"
-        android:transitionName="logo_text" />
+        android:textSize="25sp"
+        android:transitionName="logo_text"
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="438dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical">
+        android:layout_height="450dp"
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/fullName"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name">
+            android:hint="Full Name"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:fontFamily="@font/roboto_slab"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,11 +59,14 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email">
+            android:hint="Email"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,11 +75,14 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username">
+            android:hint="Username"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,11 +92,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone Number"
-            android:inputType="number">
+            android:inputType="number"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,11 +109,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,11 +126,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm password"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,27 +141,28 @@
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:entries="@array/spinner_items"
+            android:fontFamily="@font/roboto_slab"
             android:hint="Role"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:minHeight="48dp"
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/saveData"
-        android:text="Save" />
-
-    <!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:layout_width="193dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="right"-->
-<!--        android:layout_margin="5dp"-->
-<!--        android:background="@color/black"-->
-<!--        android:elevation="0dp"-->
-<!--        android:text="GO"-->
-<!--        android:textColor="@color/white" />-->
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        android:fontFamily="@font/roboto_slab"
+        android:text="Register"
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

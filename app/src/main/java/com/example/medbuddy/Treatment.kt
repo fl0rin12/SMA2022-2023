@@ -2,7 +2,7 @@ package com.example.medbuddy
 
 data class Treatment(
     var doctorUID: String? = null,
-    var pacientUID: String? = null,
+    var patientUID: String? = null,
     var diagnostic: String? = null,
     var medication: String? = null,
     var symptom: String? = null,

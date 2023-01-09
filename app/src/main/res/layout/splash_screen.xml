@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#F1948A">
+    android:background="#F1948A"
+    tools:context=".MainActivity">
 
 
     <ImageView
@@ -15,13 +15,13 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
+        android:contentDescription="The Logo"
         android:transitionName="logo_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/medbuddylogo"
-        android:contentDescription="The Logo"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/medbuddy_title"
@@ -30,6 +30,7 @@
         android:layout_marginTop="-20dp"
         android:fontFamily="@font/roboto_slab"
         android:text="MedBuddy"
+        android:textColor="@color/black"
         android:textSize="64sp"
         android:transitionName="logo_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +46,7 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/roboto_slab"
         android:text="Your daily medical assistant"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

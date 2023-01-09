@@ -2,7 +2,7 @@
 <resources>
     <color name="medbuddy_logo_background">#F1948A</color>
 <string-array name="spinner_items">
-    <item>Pacient</item>
+    <item>Patient</item>
     <item>Medic</item>
 </string-array>
 </resources>

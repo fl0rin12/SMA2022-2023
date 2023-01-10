@@ -69,18 +69,19 @@ class Login : AppCompatActivity() {
                                     snapshot.child("phoneNumber").getValue(String::class.java)
                                 val specialty =
                                     snapshot.child("specialty").getValue(String::class.java)
-//                                Log.d("TAG", "role: $role\n")
                                 if (role.equals("Medic")) {
                                     val intent = Intent(this, DoctorDashboard::class.java)
                                     intent.putExtra("fullName", fullName)
                                     intent.putExtra("phoneNumber", phoneNumber)
                                     intent.putExtra("specialty", specialty)
                                     startActivity(intent)
+                                    Toast.makeText(this, "Log in as Medic", Toast.LENGTH_SHORT).show()
                                 } else {
                                     val intent = Intent(this, PatientDashboard::class.java)
                                     intent.putExtra("fullName", fullName)
                                     intent.putExtra("phoneNumber", phoneNumber)
                                     startActivity(intent)
+                                    Toast.makeText(this, "Log in as Patient ", Toast.LENGTH_SHORT).show()
                                 }
                             } else {
                                 Log.d(

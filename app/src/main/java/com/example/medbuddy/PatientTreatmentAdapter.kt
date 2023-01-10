@@ -27,7 +27,7 @@ class PatientTreatmentAdapter(val context: Context, private val treatmentList: A
             databaseRef.child(it).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val fullName = snapshot.child("fullName").getValue(String::class.java)
-                    holder.textName.text = fullName
+                    holder.textName.text = fullName + " - " + patient.diagnostic
                     holder.itemView.setOnClickListener {
                         val intent = Intent(context, PatientInteraction::class.java)
                         intent.putExtra("doctorUID", patient.doctorUID)

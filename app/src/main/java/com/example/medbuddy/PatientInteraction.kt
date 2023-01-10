@@ -35,6 +35,8 @@ class PatientInteraction : AppCompatActivity(){
 
     private lateinit var doctorFullName: TextView
     private lateinit var symptom: TextView
+    private lateinit var diagnostic: TextView
+    private lateinit var medication: TextView
     private lateinit var mDialog: Dialog
     private lateinit var mnDialog: Dialog
     private companion object {
@@ -54,12 +56,19 @@ class PatientInteraction : AppCompatActivity(){
         doctorFullName = findViewById(R.id.doctorPatientTitle)
         doctorFullName.text = intent.getStringExtra("doctorFullName")
 
+        diagnostic = findViewById(R.id.diagnostic)
+        diagnostic.text = intent.getStringExtra("diagnostic")
+
+        medication = findViewById(R.id.medication)
+        medication.text = intent.getStringExtra("medication")
+
         symptom = findViewById(R.id.symptom)
         symptom.text = intent.getStringExtra("symptom")
+
         val reminderButton = findViewById<LinearLayout>(R.id.layoutReminder)
         reminderButton.setOnClickListener {
             mDialog = Dialog(this)
-            mDialog.setContentView(R.layout.pop_up_reminder_hour)
+            mDialog.setContentView(R.layout.pop_up_reminder_set)
             mDialog.setTitle("Pop-up Window")
             mDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             mDialog.window!!.setLayout(

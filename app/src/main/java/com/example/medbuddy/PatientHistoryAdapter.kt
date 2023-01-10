@@ -34,7 +34,7 @@ class PatientHistoryAdapter(val context: Context, private val treatmentList: Arr
                     holder.textName.text = fullName + " - " + patient.diagnostic
                     holder.itemView.setOnClickListener {
                         mDialog = Dialog(context)
-                        mDialog.setContentView(R.layout.pop_up_doctor_history)
+                        mDialog.setContentView(R.layout.pop_up_patient_history)
                         mDialog.setTitle("Pop-up Window")
                         mDialog.findViewById<TextView>(R.id.fullName).text = fullName
                         mDialog.findViewById<TextView>(R.id.diagnostic).text = patient.diagnostic

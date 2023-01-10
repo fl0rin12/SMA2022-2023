@@ -104,6 +104,7 @@ class Register : AppCompatActivity() {
                                 if (it.isSuccessful) {
                                     val intent = Intent(this, Login::class.java)
                                     startActivity(intent)
+                                    Toast.makeText(this, "Register Succes", Toast.LENGTH_SHORT).show()
                                 } else {
                                     Toast.makeText(
                                         this, "Something wrong with intent", Toast.LENGTH_SHORT

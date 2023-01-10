@@ -65,6 +65,10 @@ class PatientInteraction : AppCompatActivity(){
         symptom = findViewById(R.id.symptom)
         symptom.text = intent.getStringExtra("symptom")
 
+        findViewById<LinearLayout>(R.id.layoutGiveReview).setOnClickListener {
+            Toast.makeText(this, "Yet to be implemented.\nEverybody gets 5/5 for effort.", Toast.LENGTH_SHORT).show()
+        }
+
         val reminderButton = findViewById<LinearLayout>(R.id.layoutReminder)
         reminderButton.setOnClickListener {
             mDialog = Dialog(this)

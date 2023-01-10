@@ -26,6 +26,7 @@ class PatientDashboard : AppCompatActivity() {
     private lateinit var pnDialog: Dialog
     private lateinit var title: TextView
     private lateinit var needDoctor: LinearLayout
+    private lateinit var appointment: LinearLayout
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +48,10 @@ class PatientDashboard : AppCompatActivity() {
             val intent = Intent(this, RequestCreate::class.java)
             startActivity(intent)
         }
-
+        appointment=findViewById(R.id.layoutAppointments)
+        appointment.setOnClickListener{
+            Toast.makeText(this, "To be implemented, stay soon!", Toast.LENGTH_SHORT).show()
+        }
         mDbRef = FirebaseDatabase.getInstance().reference
         mAuth = FirebaseAuth.getInstance()
         treatmentList = ArrayList()

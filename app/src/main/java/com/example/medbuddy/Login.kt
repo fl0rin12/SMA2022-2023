@@ -7,6 +7,8 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -25,7 +27,7 @@ class Login : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val newUser = findViewById<Button>(R.id.newUser)
         val logInEmail = findViewById<TextInputLayout>(R.id.emailLogIn)
-        val logInPassword = findViewById<TextInputLayout>(R.id.passwordLogIn)
+        val logInPassword = findViewById<TextInputEditText>(R.id.passwordLogIn)
         val loginButton = findViewById<Button>(R.id.loginButton)
         newUser.setOnClickListener {
             val intent = Intent(this, Register::class.java)
@@ -34,7 +36,7 @@ class Login : AppCompatActivity() {
 
         loginButton.setOnClickListener {
             val email = logInEmail.editText?.text.toString()
-            val password = logInPassword.editText?.text.toString()
+            val password = logInPassword.text.toString()
             if (email.isEmpty() || password.isEmpty()) {
                 if (email.isEmpty()) {
                     logInEmail.error = "Please enter a username"
@@ -66,7 +68,7 @@ class Login : AppCompatActivity() {
                                     snapshot.child("fullName").getValue(String::class.java)
                                 val phoneNumber =
                                     snapshot.child("phoneNumber").getValue(String::class.java)
-                                Log.d("TAG", "role: $role\n")
+//                                Log.d("TAG", "role: $role\n")
                                 if (role.equals("Medic")) {
                                     val intent = Intent(this, DoctorDashboard::class.java)
                                     intent.putExtra("fullName", fullName)

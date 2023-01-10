@@ -6,7 +6,11 @@ data class Treatment(
     var diagnostic: String? = null,
     var medication: String? = null,
     var symptom: String? = null,
+    var age: String? = null,
+    var gender: String? = null,
+    var weight: String? = null,
     var specialty:String? = null,
+    var uid:String? = null,
     var accepted:Boolean? = null,
     var active:Boolean? = null
 )

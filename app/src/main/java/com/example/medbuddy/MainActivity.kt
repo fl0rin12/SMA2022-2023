@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import android.util.Pair as UtilPair
 
 
@@ -18,10 +19,12 @@ class MainActivity : AppCompatActivity() {
     private val SPLASH_SCREEN = 4000
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+
         super.onCreate(savedInstanceState)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.splash_screen)
-        // set splash screen then see if move to login or not
 
         val image = findViewById<ImageView>(R.id.medbuddy_image)
         val title = findViewById<TextView>(R.id.medbuddy_title)

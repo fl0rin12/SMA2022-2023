@@ -2,11 +2,13 @@ package com.example.medbuddy
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.getValue
 
 class CreateVirtualRequest : AppCompatActivity() {
 
@@ -53,23 +55,36 @@ class CreateVirtualRequest : AppCompatActivity() {
         sendRequest.setOnClickListener {
             val symptoms = patientWords.text.toString()
             val specialty = spinner.selectedItem.toString()
-
-            val request = Treatment(
-                patientUID = auth.currentUser?.uid,
-                symptom = symptoms,
-                specialty = specialty,
-                accepted = false,
-                active = true
-            )
-            val uid = database.reference.push().key
-            if (uid != null) {
-                database.reference.child("Treatment").child(uid).setValue(request)
-                    .addOnSuccessListener {
+            val databaseRef = FirebaseDatabase.getInstance().getReference("Users/")
+            val userRef = auth.currentUser?.uid?.let { it1 -> databaseRef.child(it1) }
+            userRef?.get()?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val uid = database.reference.push().key
+                    val request = Treatment(
+                        patientUID = auth.currentUser?.uid,
+                        symptom = symptoms,
+                        specialty = specialty,
+                        accepted = false,
+                        active = true,
+                        age = task.result.child("age").getValue(String::class.java),
+                        gender = task.result.child("gender").getValue(String::class.java),
+                        weight = task.result.child("weight").getValue(String::class.java),
+                        uid = uid
+                    )
+                    if (uid != null) {
                         database.reference.child("Treatment").child(uid).setValue(request)
-                        val intent = Intent(this, PatientDashboard::class.java)
-                        startActivity(intent)
-                    }.addOnFailureListener {
-                    Toast.makeText(this, "Something wrong", Toast.LENGTH_SHORT).show()
+                            .addOnSuccessListener {
+                                database.reference.child("Treatment").child(uid).setValue(request)
+                                val intent = Intent(this, PatientDashboard::class.java)
+                                startActivity(intent)
+                            }.addOnFailureListener {
+                                Toast.makeText(this, "Something wrong", Toast.LENGTH_SHORT).show()
+                            }
+                    }
+                } else {
+                    Log.d(
+                        "TAG", task.exception!!.message!!
+                    ) //Don't ignore potential errors!
                 }
             }
         }

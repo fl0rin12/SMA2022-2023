@@ -4,104 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".PatientsHistory"
-    app:cardCornerRadius="20dp">
+    android:background="@color/background"
+    tools:context=".PatientHistory">
 
+    <View
+        android:id="@+id/viewHeaderBackground"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:background="#993333"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/fullName"
+        android:id="@+id/treatmentHistoryTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         android:fontFamily="@font/roboto_slab"
-        android:text="patientFullName"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_marginTop="100dp"
+        android:text="patientName's treatment history"
         android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
-    <LinearLayout
-        android:id="@+id/layoutDiagnostic"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/treatmentHistoryBackButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:clickable="true"
+        android:src="@drawable/ic_treatment_back"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/patientTreatmentsHistory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/fullName"
-        android:gravity="center"
-        android:layout_marginTop="100dp">
+        android:layout_height="600dp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/treatmentHistoryTitle">
 
-        <TextView
-            android:id="@+id/diagnosticText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_slab"
-            android:text="Diagnostic: "
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textAlignment="center"
-            tools:ignore="HardcodedText" />
+        <LinearLayout
+            android:id="@+id/treatmentHistoryList"
+            android:layout_width="match_parent"
+            android:layout_height="575dp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:orientation="vertical" />
 
-        <TextView
-            android:id="@+id/diagnostic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_slab"
-            android:text="patientDiagnostic"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textAlignment="center"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutMedication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/layoutDiagnostic"
-        android:gravity="center"
-        android:layout_marginTop="100dp">
-
-        <TextView
-            android:id="@+id/medicationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_slab"
-            android:text="Medication: "
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textAlignment="center"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:id="@+id/medication"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_slab"
-            android:text="patientMedication"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textAlignment="center"
-            android:layout_marginTop="10dp"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/review"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_slab"
-        android:text="reviewScore"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="100dp"
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/layoutMedication"
-        tools:ignore="HardcodedText" />
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

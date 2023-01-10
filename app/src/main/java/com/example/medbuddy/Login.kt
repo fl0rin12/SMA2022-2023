@@ -7,7 +7,6 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +21,7 @@ class Login : AppCompatActivity() {
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.login_screen)
+        setContentView(R.layout.login)
 
         auth = FirebaseAuth.getInstance()
         val newUser = findViewById<Button>(R.id.newUser)

@@ -203,8 +203,6 @@
                 android:id="@+id/layoutReminder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_32sdp"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -233,17 +231,14 @@
                 android:id="@+id/layoutEditMedication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_32sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/layoutEndMedication"
                 app:layout_constraintStart_toEndOf="@id/layoutReminder">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/editMedication"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_medication" />
@@ -252,7 +247,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_slab"
-                    android:text="Edit Medication"
+                    android:text="Edit"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutEndMedication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/layoutEditMedication">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_decline" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab"
+                    android:text="End"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:ignore="HardcodedText" />

@@ -63,7 +63,7 @@ class DoctorDashboard : AppCompatActivity() {
 
         patientHistory = findViewById(R.id.layoutPatientsHistory)
         patientHistory.setOnClickListener{
-            val intent = Intent(this, PatientsHistory::class.java)
+            val intent = Intent(this, DoctorHistory::class.java)
             startActivity(intent)
         }
 
@@ -99,7 +99,7 @@ class DoctorDashboard : AppCompatActivity() {
         val settingsButton = findViewById<ImageView>(R.id.settingsDoctor)
         settingsButton.setOnClickListener {
             mDialog = Dialog(this)
-            mDialog.setContentView(R.layout.popup_settings)
+            mDialog.setContentView(R.layout.pop_up_settings)
             mDialog.setTitle("Pop-up Window")
             mDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             mDialog.window!!.setLayout(
@@ -117,7 +117,7 @@ class DoctorDashboard : AppCompatActivity() {
                 mDialog.dismiss()
 
                 mnDialog = Dialog(this)
-                mnDialog.setContentView(R.layout.edit_profile_doctor)
+                mnDialog.setContentView(R.layout.doctor_edit_profile)
                 mnDialog.setTitle("Pop-up Window")
                 mnDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 mnDialog.window!!.setLayout(

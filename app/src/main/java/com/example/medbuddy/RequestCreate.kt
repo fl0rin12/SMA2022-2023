@@ -8,9 +8,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.getValue
 
-class CreateVirtualRequest : AppCompatActivity() {
+class RequestCreate : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
@@ -21,7 +20,7 @@ class CreateVirtualRequest : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.create_virtual_request)
+        setContentView(R.layout.request_create)
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()

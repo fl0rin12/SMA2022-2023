@@ -18,7 +18,7 @@ DoctorTreatmentAdapter(val context: Context, private val treatmentList: ArrayLis
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.show_user, parent, false)
+        val view: View = LayoutInflater.from(context).inflate(R.layout.list_element, parent, false)
         return UserViewHolder(view)
     }
 

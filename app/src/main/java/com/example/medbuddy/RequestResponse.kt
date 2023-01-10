@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class RespondVirtualRequest : AppCompatActivity() {
+class RequestResponse : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
@@ -31,7 +31,7 @@ class RespondVirtualRequest : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference
 
-        setContentView(R.layout.respond_virtual_request)
+        setContentView(R.layout.request_response)
 
         findViewById<ImageView>(R.id.BackButton).setOnClickListener {
             val intent = Intent(this, DoctorDashboard::class.java)

@@ -44,7 +44,7 @@ class PatientDashboard : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         needDoctor = findViewById(R.id.layoutNeedDoctor)
         needDoctor.setOnClickListener {
-            val intent = Intent(this, CreateVirtualRequest::class.java)
+            val intent = Intent(this, RequestCreate::class.java)
             startActivity(intent)
         }
 
@@ -59,7 +59,7 @@ class PatientDashboard : AppCompatActivity() {
 
         settingsButton.setOnClickListener{
             pDialog= Dialog(this)
-            pDialog.setContentView(R.layout.popup_settings)
+            pDialog.setContentView(R.layout.pop_up_settings)
             pDialog.setTitle("Pop-up Window")
             pDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             pDialog.window!!.setLayout(
@@ -79,7 +79,7 @@ class PatientDashboard : AppCompatActivity() {
                 pDialog.dismiss()
 
                 pnDialog= Dialog(this)
-                pnDialog.setContentView(R.layout.edit_profile_pacient)
+                pnDialog.setContentView(R.layout.patient_edit_profile)
                 pnDialog.setTitle("Pop-up Window")
                 pnDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 pnDialog.window!!.setLayout(

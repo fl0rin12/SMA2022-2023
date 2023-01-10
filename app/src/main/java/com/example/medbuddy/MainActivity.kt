@@ -16,7 +16,7 @@ import android.util.Pair as UtilPair
 
 class MainActivity : AppCompatActivity() {
 
-    private val SPLASH_SCREEN = 4000
+    private val splashScreen = 4000
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        setContentView(R.layout.splash_screen)
+        setContentView(R.layout.splash)
 
         val image = findViewById<ImageView>(R.id.medbuddy_image)
         val title = findViewById<TextView>(R.id.medbuddy_title)
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             val options = ActivityOptions.makeSceneTransitionAnimation(this, UtilPair.create(title, "logo_text"),
             UtilPair.create(image, "logo_image"))
             startActivity(intent, options.toBundle())
-        }, SPLASH_SCREEN.toLong())
+        }, splashScreen.toLong())
     }
 
 }

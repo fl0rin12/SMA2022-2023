@@ -17,7 +17,7 @@ class RequestTreatmentAdapter(val context: Context, private val treatmentList: A
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.show_user, parent, false)
+        val view: View = LayoutInflater.from(context).inflate(R.layout.list_element, parent, false)
         return UserViewHolder(view)
     }
 
@@ -30,7 +30,7 @@ class RequestTreatmentAdapter(val context: Context, private val treatmentList: A
                     val fullName = snapshot.child("fullName").getValue(String::class.java)
                     holder.textName.text = fullName
                     holder.itemView.setOnClickListener {
-                        val intent = Intent(context, RespondVirtualRequest::class.java)
+                        val intent = Intent(context, RequestResponse::class.java)
                         intent.putExtra("age", patient.age)
                         intent.putExtra("weight", patient.weight)
                         intent.putExtra("gender", patient.gender)

@@ -16,7 +16,7 @@ class Register : AppCompatActivity() {
     private val emailRegex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.register_screen)
+        setContentView(R.layout.register)
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         val username = findViewById<TextInputLayout>(R.id.usernameRegister)
@@ -92,7 +92,7 @@ class Register : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val databaseRef =
                                 database.reference.child("Users").child(auth.currentUser!!.uid)
-                            val users = Users(
+                            val user = User(
                                 sdUsername,
                                 sdPassword,
                                 sdFullName,
@@ -100,7 +100,7 @@ class Register : AppCompatActivity() {
                                 sdRole,
                                 auth.currentUser!!.uid
                             )
-                            databaseRef.setValue(users).addOnCompleteListener {
+                            databaseRef.setValue(user).addOnCompleteListener {
                                 if (it.isSuccessful) {
                                     val intent = Intent(this, Login::class.java)
                                     startActivity(intent)

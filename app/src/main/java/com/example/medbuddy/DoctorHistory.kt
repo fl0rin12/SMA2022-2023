@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class PatientsHistory : AppCompatActivity() {
+class DoctorHistory : AppCompatActivity() {
 
     private lateinit var treatmentRecyclerView: RecyclerView
     private lateinit var treatmentList: ArrayList<Treatment>
-    private lateinit var adapter: PatientHistoryAdapter
+    private lateinit var adapter: PatientsHistoryAdapter
     private lateinit var mDbRef: DatabaseReference
     private lateinit var mAuth: FirebaseAuth
     private lateinit var auth: FirebaseAuth
@@ -30,7 +30,7 @@ class PatientsHistory : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        setContentView(R.layout.patients_history_list)
+        setContentView(R.layout.doctor_history)
 
         back = findViewById(R.id.BackButton)
         back.setOnClickListener {
@@ -43,7 +43,7 @@ class PatientsHistory : AppCompatActivity() {
         mDbRef = FirebaseDatabase.getInstance().reference
         mAuth = FirebaseAuth.getInstance()
         treatmentList = ArrayList()
-        adapter = PatientHistoryAdapter(this, treatmentList)
+        adapter = PatientsHistoryAdapter(this, treatmentList)
         treatmentRecyclerView = findViewById(R.id.patientsHistoryRecyclerView)
         treatmentRecyclerView.layoutManager = LinearLayoutManager(this)
         treatmentRecyclerView.adapter = adapter

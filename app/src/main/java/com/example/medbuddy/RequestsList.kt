@@ -30,7 +30,7 @@ class RequestsList : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        setContentView(R.layout.requests_list)
+        setContentView(R.layout.request_list)
 
         back = findViewById(R.id.backButton)
         back.setOnClickListener {

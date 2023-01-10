@@ -14,13 +14,13 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class PatientHistoryAdapter(val context: Context, private val treatmentList: ArrayList<Treatment>) :
-    RecyclerView.Adapter<PatientHistoryAdapter.UserViewHolder>() {
+class PatientsHistoryAdapter(val context: Context, private val treatmentList: ArrayList<Treatment>) :
+    RecyclerView.Adapter<PatientsHistoryAdapter.UserViewHolder>() {
 
     private lateinit var mDialog: Dialog
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.show_user, parent, false)
+        val view: View = LayoutInflater.from(context).inflate(R.layout.list_element, parent, false)
         return UserViewHolder(view)
     }
 
@@ -34,7 +34,7 @@ class PatientHistoryAdapter(val context: Context, private val treatmentList: Arr
                     holder.textName.text = fullName
                     holder.itemView.setOnClickListener {
                         mDialog = Dialog(context)
-                        mDialog.setContentView(R.layout.patient_history)
+                        mDialog.setContentView(R.layout.pop_up_doctor_history)
                         mDialog.setTitle("Pop-up Window")
                         mDialog.findViewById<TextView>(R.id.fullName).text = fullName
                         mDialog.findViewById<TextView>(R.id.diagnostic).text = patient.diagnostic

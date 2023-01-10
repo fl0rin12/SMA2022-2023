@@ -5,22 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".TreatmentHistory">
+    tools:context=".DoctorHistory">
 
     <View
-        android:id="@+id/viewHeaderBackground"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
         android:background="#993333"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/treatmentHistoryTitle"
+        android:id="@+id/patientHistoryTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:fontFamily="@font/roboto_slab"
-        android:text="patientName's treatment history"
+        android:text="Patients history"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/_16sdp"
@@ -30,7 +29,7 @@
         tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/treatmentHistoryBackButton"
+        android:id="@+id/BackButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="@dimen/_16sdp"
@@ -40,10 +39,10 @@
         android:tint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/patientTreatmentsHistory"
+        android:id="@+id/doctorPatientsHistory"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_marginLeft="@dimen/_16sdp"
@@ -53,16 +52,24 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_16sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/treatmentHistoryTitle">
+        app:layout_constraintTop_toBottomOf="@id/patientHistoryTitle">
 
         <LinearLayout
-            android:id="@+id/treatmentHistoryList"
+            android:id="@+id/PatientsHistory"
             android:layout_width="match_parent"
             android:layout_height="575dp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/patientsHistoryRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/list_element" />
+
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

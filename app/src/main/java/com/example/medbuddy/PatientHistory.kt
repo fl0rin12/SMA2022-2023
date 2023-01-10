@@ -1,4 +1,4 @@
 package com.example.medbuddy
 
-class TreatmentHistory {
+class PatientHistory {
 }

@@ -48,7 +48,7 @@
             android:name=".PatientInteraction"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".CreateVirtualRequest"
+            android:name=".RequestCreate"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Appointments"
@@ -57,10 +57,10 @@
             android:name=".RequestsList"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".PatientsHistory"
+            android:name=".DoctorHistory"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".RespondVirtualRequest"
+            android:name=".RequestResponse"
             android:windowSoftInputMode="adjustPan" />
         <meta-data
             android:name="preloaded_fonts"

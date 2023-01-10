@@ -30,7 +30,7 @@ class PatientTreatmentAdapter(val context: Context, private val treatmentList: A
                     val fullName = snapshot.child("fullName").getValue(String::class.java)
                     holder.textName.text = fullName
                     holder.itemView.setOnClickListener {
-                        val intent = Intent(context, DoctorInteraction::class.java)
+                        val intent = Intent(context, PatientInteraction::class.java)
                         intent.putExtra("doctorUID", patient.doctorUID)
                         intent.putExtra("diagnostic", patient.diagnostic)
                         intent.putExtra("medication", patient.medication)

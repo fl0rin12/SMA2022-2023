@@ -42,10 +42,10 @@
             android:name=".DoctorDashboard"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".PatientInteraction"
+            android:name=".DoctorInteraction"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".DoctorInteraction"
+            android:name=".PatientInteraction"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".CreateVirtualRequest"

@@ -6,6 +6,10 @@ data class Users(
     var fullName: String? = null,
     var phoneNumber: String? = null,
     var role: String? = null,
+    var speciality: String? =null,
+    var gender: String? = null,
+    var age:String? = null,
+    var weight:String? = null,
     var uid: String? = null
 )
 

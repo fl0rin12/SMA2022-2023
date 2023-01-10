@@ -3,7 +3,7 @@ package com.example.medbuddy
 data class User(
     var uid: String? = null,
     var username: String? = null,
-    var pasword: String? = null,
+    var password: String? = null,
     var fullName: String? = null,
     var phoneNumber: String? = null,
     var gender: String? = null,

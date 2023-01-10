@@ -93,12 +93,12 @@ class Register : AppCompatActivity() {
                             val databaseRef =
                                 database.reference.child("Users").child(auth.currentUser!!.uid)
                             val user = User(
-                                sdUsername,
-                                sdPassword,
-                                sdFullName,
-                                sdPhoneNumber,
-                                sdRole,
-                                auth.currentUser!!.uid
+                                username = sdUsername,
+                                password = sdPassword,
+                                fullName = sdFullName,
+                                phoneNumber = sdPhoneNumber,
+                                role = sdRole,
+                                uid = auth.currentUser!!.uid
                             )
                             databaseRef.setValue(user).addOnCompleteListener {
                                 if (it.isSuccessful) {

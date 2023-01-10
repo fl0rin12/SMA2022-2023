@@ -48,7 +48,7 @@ class DoctorInteraction : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.patient_interaction)
+        setContentView(R.layout.doctor_interaction)
 
         patientFullName = findViewById(R.id.patientTreatmentTitle)
         patientFullName.text = intent.getStringExtra("patientFullName")

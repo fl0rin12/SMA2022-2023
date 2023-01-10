@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".PatientInteraction">
+    tools:context=".DoctorInteraction">
 
     <View
         android:id="@+id/viewHeaderBackground"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/BackButton"
+        android:id="@+id/treatmentHistoryBackButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="@dimen/_16sdp"
@@ -28,23 +28,23 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/doctorPatientTitle"
+        android:id="@+id/patientTreatmentTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/roboto_slab"
-        android:text="doctorName"
+        android:text="patientName"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/BackButton"
+        app:layout_constraintStart_toEndOf="@id/treatmentHistoryBackButton"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/doctorInteractionCardHeader"
+        android:id="@+id/patientCardHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16sdp"
@@ -112,15 +112,14 @@
         android:layout_marginBottom="@dimen/_32sdp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_16sdp"
-        app:layout_constraintBottom_toTopOf="@id/doctorInteractionHeader"
-        app:layout_constraintTop_toBottomOf="@id/doctorInteractionCardHeader">
+        app:layout_constraintBottom_toTopOf="@id/patientInteractionHeader"
+        app:layout_constraintTop_toBottomOf="@id/patientCardHeader">
 
         <TextView
             android:id="@+id/doctorChatTitle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="@font/roboto_slab"
             android:text="Chat"
             android:textAlignment="center"
@@ -130,7 +129,7 @@
             tools:ignore="HardcodedText" />
 
         <RelativeLayout
-            android:id="@+id/patientChat"
+            android:id="@+id/doctorChat"
             android:layout_width="match_parent"
             android:layout_height="330dp"
             android:layout_marginLeft="@dimen/_10sdp"
@@ -184,10 +183,11 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/doctorInteractionHeader"
+        android:id="@+id/patientInteractionHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16sdp"
+
         android:layout_marginEnd="@dimen/_16sdp"
         android:layout_marginBottom="@dimen/_20sdp"
         app:cardBackgroundColor="@color/white"
@@ -203,13 +203,13 @@
                 android:id="@+id/layoutReminder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_32sdp"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/layoutAppointment"
+                app:layout_constraintEnd_toStartOf="@id/layoutEditMedication"
                 app:layout_constraintStart_toStartOf="parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -230,61 +230,29 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layoutAppointment"
+                android:id="@+id/layoutEditMedication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/layoutGiveReview"
-                app:layout_constraintStart_toEndOf="@id/layoutReminder">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/appointment"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_appointment" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_slab"
-                    android:text="Appointment"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    tools:ignore="HardcodedText" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutGiveReview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/_32sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.82"
-                app:layout_constraintStart_toEndOf="@id/layoutAppointment"
-                tools:ignore="TouchTargetSizeCheck">
+                app:layout_constraintStart_toEndOf="@id/layoutReminder">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/editMedication"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_review" />
+                    android:src="@drawable/ic_medication" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_slab"
-                    android:text="Review"
+                    android:text="Edit Medication"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:ignore="HardcodedText" />

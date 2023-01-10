@@ -76,6 +76,7 @@ class RequestCreate : AppCompatActivity() {
                                 database.reference.child("Treatment").child(uid).setValue(request)
                                 val intent = Intent(this, PatientDashboard::class.java)
                                 startActivity(intent)
+                                Toast.makeText(this, "Request has been sent", Toast.LENGTH_SHORT).show()
                             }.addOnFailureListener {
                                 Toast.makeText(this, "Something wrong", Toast.LENGTH_SHORT).show()
                             }

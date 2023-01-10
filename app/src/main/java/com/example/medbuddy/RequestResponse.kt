@@ -62,6 +62,9 @@ class RequestResponse : AppCompatActivity() {
                 updates["doctorUID"] = auth.currentUser?.uid.toString()
                 updates["accepted"] = true
                 userReference?.updateChildren(updates)
+                val intent = Intent(this, DoctorDashboard::class.java)
+                startActivity(intent)
+                Toast.makeText(this, "Request accepted", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -72,6 +75,9 @@ class RequestResponse : AppCompatActivity() {
             val updates = HashMap<String, Any>()
             updates["active"] = false
             userReference?.updateChildren(updates)
+            val intent = Intent(this, DoctorDashboard::class.java)
+            startActivity(intent)
+            Toast.makeText(this, "Request rejected", Toast.LENGTH_SHORT).show()
         }
     }
 }

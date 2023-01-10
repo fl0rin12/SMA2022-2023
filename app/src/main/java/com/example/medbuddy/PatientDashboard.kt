@@ -151,12 +151,11 @@ class PatientDashboard : AppCompatActivity() {
                         updates["weight"]=sdWeight
                         updates["gender"]=sdGender
                         userReference.updateChildren(updates)
+                        pnDialog.dismiss()
+                        Toast.makeText(this, "Your data has been changed", Toast.LENGTH_SHORT).show()
+
                     }
                 }
-//                startActivity(Intent(this, Login::class.java))
-//
-//                finish()
-//
 
                 pnDialog.show()
             }

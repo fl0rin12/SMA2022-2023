@@ -59,6 +59,11 @@ class DoctorInteraction : AppCompatActivity() {
         findViewById<TextView>(R.id.medication).text = intent.getStringExtra("medication")
         findViewById<TextView>(R.id.diagnostic).text = intent.getStringExtra("diagnostic")
 
+        findViewById<ImageView>(R.id.treatmentHistoryBackButton).setOnClickListener {
+            val intent = Intent(this, DoctorDashboard::class.java)
+            startActivity(intent)
+        }
+
         val reminderButton = findViewById<LinearLayout>(R.id.layoutReminder)
         reminderButton.setOnClickListener {
             mDialog = Dialog(this)

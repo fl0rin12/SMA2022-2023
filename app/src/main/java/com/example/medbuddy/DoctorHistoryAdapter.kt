@@ -14,8 +14,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class PatientsHistoryAdapter(val context: Context, private val treatmentList: ArrayList<Treatment>) :
-    RecyclerView.Adapter<PatientsHistoryAdapter.UserViewHolder>() {
+class DoctorHistoryAdapter(val context: Context, private val treatmentList: ArrayList<Treatment>) :
+    RecyclerView.Adapter<DoctorHistoryAdapter.UserViewHolder>() {
 
     private lateinit var mDialog: Dialog
 

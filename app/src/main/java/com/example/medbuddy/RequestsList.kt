@@ -53,7 +53,7 @@ class RequestsList : AppCompatActivity() {
                 for (postSnapshot in snapshot.children) {
                     val treatment = postSnapshot.getValue(Treatment::class.java)
                     if (treatment != null) {
-                        if (
+                        if ((intent.getStringExtra("specialty") == treatment.specialty) &&
                             (treatment.accepted == false) && (treatment.active == true)
                         ) {
                             treatmentList.add(treatment)

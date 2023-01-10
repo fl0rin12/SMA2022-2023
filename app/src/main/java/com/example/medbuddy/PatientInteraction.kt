@@ -56,7 +56,7 @@ class PatientInteraction : AppCompatActivity(){
         val reminderButton = findViewById<LinearLayout>(R.id.layoutReminder)
         reminderButton.setOnClickListener {
             mDialog = Dialog(this)
-            mDialog.setContentView(R.layout.edit_reminder)
+            mDialog.setContentView(R.layout.pop_up_reminder_hour)
             mDialog.setTitle("Pop-up Window")
             mDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             mDialog.window!!.setLayout(
@@ -72,7 +72,7 @@ class PatientInteraction : AppCompatActivity(){
             setRepetitiveReminder.setOnClickListener {
                 mDialog.dismiss()
                 mnDialog = Dialog(this)
-                mnDialog.setContentView(R.layout.set_hours)
+                mnDialog.setContentView(R.layout.pop_up_reminder_hour)
                 mnDialog.setTitle("Pop-up Window")
                 mnDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 mnDialog.window!!.setLayout(

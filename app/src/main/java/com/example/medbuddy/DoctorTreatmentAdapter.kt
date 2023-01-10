@@ -23,19 +23,20 @@ DoctorTreatmentAdapter(val context: Context, private val treatmentList: ArrayLis
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val patient = treatmentList[position]
+        val treatment = treatmentList[position]
         val databaseRef = FirebaseDatabase.getInstance().getReference("Users/")
-        patient.patientUID?.let {
+        treatment.patientUID?.let {
             databaseRef.child(it).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val fullName = snapshot.child("fullName").getValue(String::class.java)
-                    holder.textName.text = fullName + " - " + patient.diagnostic
+                    holder.textName.text = fullName + " - " + treatment.diagnostic
                     holder.itemView.setOnClickListener {
                         val intent = Intent(context, DoctorInteraction::class.java)
-                        intent.putExtra("patientUID", patient.patientUID)
-                        intent.putExtra("diagnostic", patient.diagnostic)
-                        intent.putExtra("medication", patient.medication)
-                        intent.putExtra("symptom", patient.symptom)
+                        intent.putExtra("patientUID", treatment.patientUID)
+                        intent.putExtra("diagnostic", treatment.diagnostic)
+                        intent.putExtra("medication", treatment.medication)
+                        intent.putExtra("symptom", treatment.symptom)
+                        intent.putExtra("treatmentUID", treatment.uid)
                         intent.putExtra("patientFullName", fullName)
                         context.startActivity(intent)
                     }

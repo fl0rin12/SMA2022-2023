@@ -55,9 +55,12 @@ class DoctorDashboard : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val specialty = intent.getStringExtra("specialty")
+
         requests = findViewById(R.id.layoutNeedDoctor)
         requests.setOnClickListener{
             val intent = Intent(this, RequestsList::class.java)
+            intent.putExtra("specialty", specialty)
             startActivity(intent)
         }
 

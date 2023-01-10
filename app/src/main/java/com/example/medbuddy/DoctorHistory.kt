@@ -14,7 +14,7 @@ class DoctorHistory : AppCompatActivity() {
 
     private lateinit var treatmentRecyclerView: RecyclerView
     private lateinit var treatmentList: ArrayList<Treatment>
-    private lateinit var adapter: PatientsHistoryAdapter
+    private lateinit var adapter: DoctorHistoryAdapter
     private lateinit var mDbRef: DatabaseReference
     private lateinit var mAuth: FirebaseAuth
     private lateinit var auth: FirebaseAuth
@@ -43,7 +43,7 @@ class DoctorHistory : AppCompatActivity() {
         mDbRef = FirebaseDatabase.getInstance().reference
         mAuth = FirebaseAuth.getInstance()
         treatmentList = ArrayList()
-        adapter = PatientsHistoryAdapter(this, treatmentList)
+        adapter = DoctorHistoryAdapter(this, treatmentList)
         treatmentRecyclerView = findViewById(R.id.patientsHistoryRecyclerView)
         treatmentRecyclerView.layoutManager = LinearLayoutManager(this)
         treatmentRecyclerView.adapter = adapter

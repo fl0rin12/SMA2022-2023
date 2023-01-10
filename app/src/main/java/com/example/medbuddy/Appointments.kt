@@ -21,7 +21,7 @@ class Appointments :AppCompatActivity() {
 
         setContentView(R.layout.appointments_list)
 
-        back = findViewById(R.id.BackButton)
+        back = findViewById(R.id.backButton)
         back.setOnClickListener {
             val intent = Intent(this, DoctorDashboard::class.java)
             startActivity(intent)

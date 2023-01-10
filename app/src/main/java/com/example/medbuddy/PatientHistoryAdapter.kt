@@ -34,25 +34,23 @@ class PatientHistoryAdapter(val context: Context, private val treatmentList: Arr
                     holder.textName.text = fullName
                     holder.itemView.setOnClickListener {
                         mDialog = Dialog(context)
-                        mDialog.setContentView(R.layout.popup_settings)
+                        mDialog.setContentView(R.layout.patient_history)
                         mDialog.setTitle("Pop-up Window")
+                        mDialog.findViewById<TextView>(R.id.fullName).text = fullName
+                        mDialog.findViewById<TextView>(R.id.diagnostic).text = patient.diagnostic
+                        mDialog.findViewById<TextView>(R.id.medication).text = patient.medication
+                        mDialog.findViewById<TextView>(R.id.review).text = "5/5"
                         mDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                         mDialog.window!!.setLayout(
                             ViewGroup.LayoutParams.WRAP_CONTENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT
                         )
                         mDialog.show()
-//                        val intent = Intent(context, DoctorInteraction::class.java)
-//                        intent.putExtra("doctorUID", patient.doctorUID)
-//                        intent.putExtra("diagnostic", patient.diagnostic)
-//                        intent.putExtra("medication", patient.medication)
-//                        intent.putExtra("symptom", patient.symptom)
-//                        intent.putExtra("doctorFullName", fullName)
-//                        context.startActivity(intent)
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
+                    // Do nothing
                 }
             })
         }

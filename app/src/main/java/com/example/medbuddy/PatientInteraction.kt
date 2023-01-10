@@ -137,6 +137,7 @@ class PatientInteraction : AppCompatActivity() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
+                    // Do nothing
                 }
             })
 

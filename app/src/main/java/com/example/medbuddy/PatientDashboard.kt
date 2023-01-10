@@ -102,6 +102,7 @@ class PatientDashboard : AppCompatActivity() {
                     override fun onItemSelected(
                         parent: AdapterView<*>?, view: View?, position: Int, id: Long
                     ) {
+                        // Do nothing
                     }
 
                     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -178,7 +179,7 @@ class PatientDashboard : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                // Do nothing
             }
 
         })

@@ -41,6 +41,7 @@ class PatientTreatmentAdapter(val context: Context, private val treatmentList: A
                 }
 
                 override fun onCancelled(error: DatabaseError) {
+                    // Do nothing
                 }
             })
         }

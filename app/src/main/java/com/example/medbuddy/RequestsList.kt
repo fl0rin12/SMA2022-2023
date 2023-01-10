@@ -20,7 +20,7 @@ class RequestsList : AppCompatActivity() {
 
         setContentView(R.layout.requests_list)
 
-        back = findViewById(R.id.BackButton)
+        back = findViewById(R.id.backButton)
         back.setOnClickListener {
             val intent = Intent(this, DoctorDashboard::class.java)
             startActivity(intent)

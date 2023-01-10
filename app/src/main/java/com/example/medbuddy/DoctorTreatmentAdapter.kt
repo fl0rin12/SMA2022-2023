@@ -42,6 +42,7 @@ DoctorTreatmentAdapter(val context: Context, private val treatmentList: ArrayLis
                 }
 
                 override fun onCancelled(error: DatabaseError) {
+                    // Do nothing
                 }
             })
         }

@@ -92,6 +92,7 @@ class DoctorDashboard : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
             override fun onCancelled(error: DatabaseError) {
+                // Do nothing
             }
         })
 

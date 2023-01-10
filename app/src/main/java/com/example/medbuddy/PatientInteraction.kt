@@ -47,7 +47,10 @@ class PatientInteraction : AppCompatActivity(){
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         setContentView(R.layout.patient_interaction)
-
+        findViewById<ImageView>(R.id.BackButton).setOnClickListener {
+            val intent = Intent(this, PatientDashboard::class.java)
+            startActivity(intent)
+        }
         doctorFullName = findViewById(R.id.doctorPatientTitle)
         doctorFullName.text = intent.getStringExtra("doctorFullName")
 

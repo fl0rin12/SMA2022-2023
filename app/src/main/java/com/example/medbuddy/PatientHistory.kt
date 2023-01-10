@@ -14,11 +14,9 @@ class PatientHistory : AppCompatActivity() {
 
     private lateinit var treatmentRecyclerView: RecyclerView
     private lateinit var treatmentList: ArrayList<Treatment>
-    private lateinit var adapter: DoctorHistoryAdapter
-    private lateinit var mDbRef: DatabaseReference
-    private lateinit var mAuth: FirebaseAuth
+    private lateinit var adapter: PatientHistoryAdapter
+    private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
-    private lateinit var database: FirebaseDatabase
 
     private lateinit var back: ImageView
 
@@ -30,30 +28,28 @@ class PatientHistory : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        setContentView(R.layout.doctor_history)
+        setContentView(R.layout.patient_history)
 
-        back = findViewById(R.id.BackButton)
+        back = findViewById(R.id.treatmentHistoryBackButton)
         back.setOnClickListener {
-            val intent = Intent(this, DoctorDashboard::class.java)
+            val intent = Intent(this, PatientDashboard::class.java)
             startActivity(intent)
         }
 
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        mDbRef = FirebaseDatabase.getInstance().reference
-        mAuth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance().reference
         treatmentList = ArrayList()
-        adapter = DoctorHistoryAdapter(this, treatmentList)
-        treatmentRecyclerView = findViewById(R.id.patientsHistoryRecyclerView)
+        adapter = PatientHistoryAdapter(this, treatmentList)
+        treatmentRecyclerView = findViewById(R.id.treatmentHistoryRecyclerView)
         treatmentRecyclerView.layoutManager = LinearLayoutManager(this)
         treatmentRecyclerView.adapter = adapter
-        mDbRef.child("Treatment").addValueEventListener(object : ValueEventListener {
+        database.child("Treatment").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 treatmentList.clear()
                 for (postSnapshot in snapshot.children) {
                     val treatment = postSnapshot.getValue(Treatment::class.java)
                     if (treatment != null) {
-                        if ((mAuth.currentUser?.uid == treatment.doctorUID) &&
+                        if ((auth.currentUser?.uid == treatment.patientUID) &&
                             (treatment.accepted == true) && (treatment.active == false)
                         ) {
                             treatmentList.add(treatment)

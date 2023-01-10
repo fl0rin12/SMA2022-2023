@@ -14,8 +14,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class DoctorHistoryAdapter(val context: Context, private val treatmentList: ArrayList<Treatment>) :
-    RecyclerView.Adapter<DoctorHistoryAdapter.UserViewHolder>() {
+class PatientHistoryAdapter(val context: Context, private val treatmentList: ArrayList<Treatment>) :
+    RecyclerView.Adapter<PatientHistoryAdapter.UserViewHolder>() {
 
     private lateinit var mDialog: Dialog
 
@@ -27,7 +27,7 @@ class DoctorHistoryAdapter(val context: Context, private val treatmentList: Arra
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val patient = treatmentList[position]
         val databaseRef = FirebaseDatabase.getInstance().getReference("Users/")
-        patient.patientUID?.let {
+        patient.doctorUID?.let {
             databaseRef.child(it).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val fullName = snapshot.child("fullName").getValue(String::class.java)
@@ -39,7 +39,6 @@ class DoctorHistoryAdapter(val context: Context, private val treatmentList: Arra
                         mDialog.findViewById<TextView>(R.id.fullName).text = fullName
                         mDialog.findViewById<TextView>(R.id.diagnostic).text = patient.diagnostic
                         mDialog.findViewById<TextView>(R.id.medication).text = patient.medication
-                        mDialog.findViewById<TextView>(R.id.review).text = "5/5"
                         mDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                         mDialog.window!!.setLayout(
                             ViewGroup.LayoutParams.WRAP_CONTENT,

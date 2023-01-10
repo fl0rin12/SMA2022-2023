@@ -47,31 +47,40 @@ class DoctorDashboard : AppCompatActivity() {
         setContentView(R.layout.doctor_dashboard)
 
         title = findViewById(R.id.doctorDashboardTitle)
-        title.text = intent.getStringExtra("fullName")
+        if (intent.getStringExtra("fullName") != null) {
+            title.text = "Welcome, " + intent.getStringExtra("fullName") + "!"
+        } else {
+            title.text = ""
+        }
 
         appointments = findViewById(R.id.layoutAppointments)
-        appointments.setOnClickListener{
+        appointments.setOnClickListener {
             val intent = Intent(this, Appointments::class.java)
-            startActivity(intent)
-        }
-
-        val specialty = intent.getStringExtra("specialty")
-
-        requests = findViewById(R.id.layoutNeedDoctor)
-        requests.setOnClickListener{
-            val intent = Intent(this, RequestsList::class.java)
-            intent.putExtra("specialty", specialty)
-            startActivity(intent)
-        }
-
-        patientHistory = findViewById(R.id.layoutPatientsHistory)
-        patientHistory.setOnClickListener{
-            val intent = Intent(this, DoctorHistory::class.java)
             startActivity(intent)
         }
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
+        requests = findViewById(R.id.layoutNeedDoctor)
+        requests.setOnClickListener {
+            val userRef = auth.currentUser?.let { it1 -> database.reference.child("Users/").child(it1.uid) }
+            userRef?.get()?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val snapshot = task.result
+                    val specialty = snapshot.child("specialty").getValue(String::class.java)
+                    val intent = Intent(this, RequestsList::class.java)
+                    intent.putExtra("specialty", specialty)
+                    startActivity(intent)
+                }
+            }
+        }
+
+        patientHistory = findViewById(R.id.layoutPatientsHistory)
+        patientHistory.setOnClickListener {
+            val intent = Intent(this, DoctorHistory::class.java)
+            startActivity(intent)
+        }
+
         mDbRef = FirebaseDatabase.getInstance().reference
         mAuth = FirebaseAuth.getInstance()
         treatmentList = ArrayList()
@@ -94,6 +103,7 @@ class DoctorDashboard : AppCompatActivity() {
                 }
                 adapter.notifyDataSetChanged()
             }
+
             override fun onCancelled(error: DatabaseError) {
                 // Do nothing
             }
@@ -141,6 +151,7 @@ class DoctorDashboard : AppCompatActivity() {
                         parent: AdapterView<*>?, view: View?, position: Int, id: Long
                     ) {
                     }
+
                     override fun onNothingSelected(parent: AdapterView<*>?) {
                         // Do nothing
                     }
@@ -166,8 +177,10 @@ class DoctorDashboard : AppCompatActivity() {
                         val updates = HashMap<String, Any>()
                         updates["fullName"] = sdFullName
                         updates["phoneNumber"] = sdPhoneNumber
-                        updates["speciality"] = sdSpeciality
+                        updates["specialty"] = sdSpeciality
                         userReference.updateChildren(updates)
+                        mnDialog.dismiss()
+                        Toast.makeText(this, "Your data has been changed", Toast.LENGTH_SHORT).show()
                     }
                 }
                 mnDialog.show()

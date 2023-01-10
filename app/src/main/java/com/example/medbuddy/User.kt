@@ -10,7 +10,7 @@ data class User(
     var age:String? = null,
     var weight:String? = null,
     var role: String? = null,
-    var speciality: String? =null
+    var specialty: String? =null
 )
 
 

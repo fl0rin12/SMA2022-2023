@@ -20,15 +20,16 @@ class PatientDashboard : AppCompatActivity() {
     private lateinit var treatmentRecyclerView: RecyclerView
     private lateinit var treatmentList: ArrayList<Treatment>
     private lateinit var adapter: PatientTreatmentAdapter
-    private lateinit var mDbRef: DatabaseReference
-    private lateinit var mAuth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+    private lateinit var auth: FirebaseAuth
+
     private lateinit var pDialog: Dialog
     private lateinit var pnDialog: Dialog
     private lateinit var title: TextView
     private lateinit var needDoctor: LinearLayout
     private lateinit var appointment: LinearLayout
-    private lateinit var database: FirebaseDatabase
-    private lateinit var auth: FirebaseAuth
+    private lateinit var history: LinearLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,20 +41,32 @@ class PatientDashboard : AppCompatActivity() {
         setContentView(R.layout.patient_dashboard)
 
         title = findViewById(R.id.patientDashboardTitle)
-        title.text = intent.getStringExtra("fullName")
+        if(intent.getStringExtra("fullName") != null) {
+            title.text = "Welcome, " + intent.getStringExtra("fullName") + "!"
+        }else {
+            title.text = ""
+        }
+
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
+        database = FirebaseDatabase.getInstance().reference
+
+        history = findViewById(R.id.layoutTreatmentHistory)
+        history.setOnClickListener {
+            val intent = Intent(this, PatientHistory::class.java)
+            startActivity(intent)
+        }
+
         needDoctor = findViewById(R.id.layoutNeedDoctor)
         needDoctor.setOnClickListener {
             val intent = Intent(this, RequestCreate::class.java)
             startActivity(intent)
         }
+
         appointment=findViewById(R.id.layoutAppointments)
         appointment.setOnClickListener{
             Toast.makeText(this, "To be implemented, stay soon!", Toast.LENGTH_SHORT).show()
         }
-        mDbRef = FirebaseDatabase.getInstance().reference
-        mAuth = FirebaseAuth.getInstance()
+
         treatmentList = ArrayList()
         adapter = PatientTreatmentAdapter(this, treatmentList)
         treatmentRecyclerView = findViewById(R.id.treatmentRecyclerView)
@@ -147,7 +160,7 @@ class PatientDashboard : AppCompatActivity() {
                         Toast.makeText(this, "Please enter you weight in cm ", Toast.LENGTH_SHORT).show()
                     }
                     else {
-                        val userReference = database.reference.child("Users").child(auth.currentUser!!.uid)
+                        val userReference = database.child("Users").child(auth.currentUser!!.uid)
                         val updates = HashMap<String, Any>()
                         updates["fullName"] = sdFullName
                         updates["phoneNumber"] = sdPhoneNumber
@@ -165,13 +178,13 @@ class PatientDashboard : AppCompatActivity() {
             }
             pDialog.show()
         }
-        mDbRef.child("Treatment").addValueEventListener(object : ValueEventListener {
+        database.child("Treatment").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 treatmentList.clear()
                 for (postSnapshot in snapshot.children) {
                     val treatment = postSnapshot.getValue(Treatment::class.java)
                     if (treatment != null) {
-                        if ((mAuth.currentUser?.uid == treatment.patientUID) &&
+                        if ((auth.currentUser?.uid == treatment.patientUID) &&
                             (treatment.accepted == true) && (treatment.active == true)
                         ) {
                             treatmentList.add(treatment)

@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:fontFamily="@font/roboto_slab"
-        android:text="doctorName's patients history"
+        android:text="Patients history"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/_16sdp"
@@ -29,7 +29,7 @@
         tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/treatmentHistoryBackButton"
+        android:id="@+id/BackButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="@dimen/_16sdp"
@@ -61,7 +61,15 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/patientsHistoryRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/show_user" />
+
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

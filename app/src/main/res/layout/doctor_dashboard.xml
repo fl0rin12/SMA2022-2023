@@ -109,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_slab"
-                    android:text="Virtual Requests"
+                    android:text="Requests"
                     android:textColor="@color/black"
                     android:textSize="11sp"
                     tools:ignore="HardcodedText" />

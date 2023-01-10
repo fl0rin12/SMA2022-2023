@@ -2,11 +2,12 @@ package com.example.medbuddy
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
-class RequestsList : AppCompatActivity() {
+class Appointments :AppCompatActivity() {
 
     private lateinit var back: ImageView
 
@@ -18,7 +19,7 @@ class RequestsList : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        setContentView(R.layout.requests_list)
+        setContentView(R.layout.appointments_list)
 
         back = findViewById(R.id.BackButton)
         back.setOnClickListener {

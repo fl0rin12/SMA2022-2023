@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".RequestsList">
+    tools:context=".Appointments">
 
     <View
         android:layout_width="match_parent"
@@ -14,12 +14,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/requestsListTitle"
+        android:id="@+id/doctorAppointmentsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:fontFamily="@font/roboto_slab"
-        android:text="Pending requests"
+        android:text="Appointments list"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/_16sdp"
@@ -39,10 +39,10 @@
         android:tint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/doctorRequestsList"
+        android:id="@+id/doctorAppointmentsList"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_marginLeft="@dimen/_16sdp"
@@ -52,10 +52,10 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_16sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/requestsListTitle">
+        app:layout_constraintTop_toBottomOf="@id/doctorAppointmentsTitle">
 
         <LinearLayout
-            android:id="@+id/RequestsList"
+            android:id="@+id/AppointmentsList"
             android:layout_width="match_parent"
             android:layout_height="575dp"
             android:layout_marginLeft="@dimen/_10sdp"
@@ -64,7 +64,7 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/requestsRecyclerView"
+                android:id="@+id/AppointmentsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/show_user" />

@@ -1,7 +1,9 @@
 package com.example.medbuddy
 
+import android.app.Dialog
 import android.content.Context
-import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +14,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class
-DoctorTreatmentAdapter(val context: Context, private val treatmentList: ArrayList<Treatment>) :
-    RecyclerView.Adapter<DoctorTreatmentAdapter.UserViewHolder>() {
+class PatientHistoryAdapter(val context: Context, private val treatmentList: ArrayList<Treatment>) :
+    RecyclerView.Adapter<PatientHistoryAdapter.UserViewHolder>() {
 
+    private lateinit var mDialog: Dialog
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view: View = LayoutInflater.from(context).inflate(R.layout.show_user, parent, false)
@@ -25,19 +27,28 @@ DoctorTreatmentAdapter(val context: Context, private val treatmentList: ArrayLis
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val patient = treatmentList[position]
         val databaseRef = FirebaseDatabase.getInstance().getReference("Users/")
-        patient.patientUID?.let {
+        patient.doctorUID?.let {
             databaseRef.child(it).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val fullName = snapshot.child("fullName").getValue(String::class.java)
-                    holder.textName.text = fullName + " - " + patient.diagnostic
+                    holder.textName.text = fullName
                     holder.itemView.setOnClickListener {
-                        val intent = Intent(context, PatientInteraction::class.java)
-                        intent.putExtra("patientUID", patient.patientUID)
-                        intent.putExtra("diagnostic", patient.diagnostic)
-                        intent.putExtra("medication", patient.medication)
-                        intent.putExtra("symptom", patient.symptom)
-                        intent.putExtra("patientFullName", fullName)
-                        context.startActivity(intent)
+                        mDialog = Dialog(context)
+                        mDialog.setContentView(R.layout.popup_settings)
+                        mDialog.setTitle("Pop-up Window")
+                        mDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        mDialog.window!!.setLayout(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                        )
+                        mDialog.show()
+//                        val intent = Intent(context, DoctorInteraction::class.java)
+//                        intent.putExtra("doctorUID", patient.doctorUID)
+//                        intent.putExtra("diagnostic", patient.diagnostic)
+//                        intent.putExtra("medication", patient.medication)
+//                        intent.putExtra("symptom", patient.symptom)
+//                        intent.putExtra("doctorFullName", fullName)
+//                        context.startActivity(intent)
                     }
                 }
 

@@ -50,7 +50,15 @@
         <activity
             android:name=".CreateVirtualRequest"
             android:windowSoftInputMode="adjustPan" />
-        <receiver android:name=".Reminder" />
+        <activity
+            android:name=".Appointments"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".RequestsList"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".PatientsHistory"
+            android:windowSoftInputMode="adjustPan" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

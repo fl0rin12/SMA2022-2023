@@ -47,6 +47,7 @@
         android:fontFamily="@font/roboto_slab"
         android:hint="Write here..."
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:layout_marginTop="100dp"
         android:textAlignment="center"
